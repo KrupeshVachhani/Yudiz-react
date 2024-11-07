@@ -17,14 +17,14 @@ const TimeCLock = () => {
 
             }, 1000)
 
-            clearInterval(interval);
+            return () => clearInterval(interval);
         }
 
     )
     return (<>
         <h2 >Time Changer</h2>
         <div style={{ padding: '10px 40px', border: '1px solid black', borderRadius: '5px', margin: '5px', display: 'inline-block' }}>
-            <p>{hour}: {min} : {sec}</p>
+            <p>{hour}:{min < 10 ? `0${min}` : min} : {sec < 10 ? `0${sec}` : sec}</p>
         </div></>
     )
 }
