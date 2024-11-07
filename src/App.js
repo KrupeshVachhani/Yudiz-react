@@ -1,5 +1,6 @@
 import React from 'react';
 import ClassFnComponent from './class-fn-component/index.js'
+import TimeCLock from './time-changing/TimeClock.js';
 
 export default function App() {
 
@@ -27,6 +28,7 @@ export default function App() {
     return (
         <>
             <ClassFnComponent Data={cardData} />
+            <TimeCLock/>
         </>
     );
 }

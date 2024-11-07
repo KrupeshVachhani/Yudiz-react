@@ -13,6 +13,7 @@ const ClassFnComponent = (props) => {
 
     return (
         <>
+        <h1>ClassComponent And FunctionalComponent</h1>
             <div style={{ display: 'flex', gap: '10px', padding: '10px' }}>
                 <div style={componentStyle}>
                     <h1>Class Component Example:</h1>
@@ -25,7 +26,7 @@ const ClassFnComponent = (props) => {
             </div>
 
 
-            <h1 style={{ textAlign: 'center' }}>Card List</h1>
+            <h1 >Card List</h1>
             <div className="App" style={{ display: 'flex', justifyContent: 'space-around' }}>
 
                 <div className="card-container" style={cards}>
