@@ -35,7 +35,7 @@ class ClassComponent extends Component {
   }
 }
 
-
+//Props with Class
 export class ClassComponentP extends Component {
   render() {
 
