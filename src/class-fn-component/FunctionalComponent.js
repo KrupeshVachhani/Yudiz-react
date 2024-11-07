@@ -43,12 +43,13 @@ const ABcd = (props) => {
 export const FunctionComponentP = ({ name, description, imageUrl, onClickHandler }) => {
   return (
     <>
-    <ABcd name={name} />
-    <div className="card" onClick={onClickHandler}>
-      <img src={imageUrl} alt={name} className="card-image" />
-      <h3 className="card-title">{name}</h3>
-      <p className="card-description">{description}</p>
-    </div></>
+      <ABcd name={name} />
+      <div className="card" onClick={onClickHandler}>
+        <img src={imageUrl} alt={name} className="card-image" />
+        <h3 className="card-title">{name}</h3>
+        <p className="card-description">{description}</p>
+      </div>
+    </>
   );
 };
 
