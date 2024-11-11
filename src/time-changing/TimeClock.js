@@ -9,7 +9,7 @@ const TimeCLock = () => {
 
     useEffect(
         () => {
-            const interval = setInterval(() => {
+            setInterval(() => {
 
                 setSec(new Date().getSeconds())
                 setMin(new Date().getMinutes())
@@ -17,7 +17,6 @@ const TimeCLock = () => {
 
             }, 1000)
 
-            return () => clearInterval(interval);
         }
 
     )
