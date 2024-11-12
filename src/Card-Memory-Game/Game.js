@@ -9,14 +9,17 @@ const Game = () => {
   const [matchedCards, setMatchedCards] = useState([]);
 
   function handleCardMatch(card) {
-
     setFlippedCards((flippedCards) => [...flippedCards, card]);
-    setCount((count) => count + 1);
 
     if (count === 0) {
       setPreviousCard(card);
+      setCount(count + 1);
     } else {
-      if (previousCard && previousCard.matchingNo === card.matchingNo && previousCard.id !== card.id) {
+      if (
+        previousCard &&
+        previousCard.matchingNo === card.matchingNo &&
+        previousCard.id !== card.id
+      ) {
         setMatchedCards((matchedCards) => [
           ...matchedCards,
           previousCard,
@@ -47,7 +50,7 @@ const Game = () => {
 
   return (
     <>
-      <h1>Card Memory Game</h1>
+      <h1># Card Memory Game</h1>
       <div className="Card-Game-Main">
         {cards.map((data) => (
           <div
@@ -57,13 +60,13 @@ const Game = () => {
           >
             <img
               className="Card-Game-Img"
-              src={flippedCards.includes(data) || matchedCards.includes(data)
-                ? data.img
-                : "./assets/card.png"}
+              src={
+                flippedCards.includes(data) || matchedCards.includes(data)
+                  ? data.img
+                  : "./assets/card.png"
+              }
               alt={data.alt}
-              style={{
-               
-              }}
+              style={{}}
             />
           </div>
         ))}

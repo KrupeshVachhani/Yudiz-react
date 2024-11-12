@@ -1,55 +1,54 @@
-// Props and Methods Organization
-// Code Reuse and Logic Sharing
-// Lifecycle Method Simplification
-// State Management Simplification
+// FunctionalComponent.js
 
-
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./style.css";
 
 const FunctionalComponent = () => {
   const [count, setCount] = useState(0);
-  const [color, setColor] = useState('pink');
-  const [isVisible, setIsVisible] = useState(true)
+  const [color, setColor] = useState("pink");
+  const [isVisible, setIsVisible] = useState(true);
 
   const increment = () => setCount(count + 1);
-
-  const changeColor = () => color === 'pink' ? setColor('blue') : setColor('pink');
-
+  const changeColor = () => setColor(color === "pink" ? "blue" : "pink");
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   return (
-    <div>
-      <h2>Functional Component</h2>
-      <p>Count: {count}</p>
-      <button onClick={increment}>Increment</button>
+    <div className="functional-component">
+      <h2 className="functional-title">Functional Component</h2>
+      <p className="count-text">Count: {count}</p>
+      <button onClick={increment} className="increment-button">
+        Increment
+      </button>
 
+      <p className="color-text" style={{ color: color }}>
+        Color
+      </p>
+      <button onClick={changeColor} className="color-button">
+        Change Color
+      </button>
 
-      <p style={{ color: color }}>Color</p>
-
-      <button onClick={changeColor}>Change Color</button>
-
-      <button onClick={toggleVisibility}>Toggle Visibility</button>
-      {isVisible && <p>Visible Content</p>}
-    </div >
+      <button onClick={toggleVisibility} className="visibility-button">
+        Toggle Visibility
+      </button>
+      {isVisible && <p className="visible-content">Visible Content</p>}
+    </div>
   );
 };
 
-const ABcd = (props) => {
+export const FunctionComponentP = ({
+  name,
+  description,
+  imageUrl,
+  onClickHandler,
+}) => {
   return (
-    <>Hello{props.name}</>
-  )
-}
-
-export const FunctionComponentP = ({ name, description, imageUrl, onClickHandler }) => {
-  return (
-    <>
-      <ABcd name={name} />
+    <div className="function-component-p">
       <div className="card" onClick={onClickHandler}>
         <img src={imageUrl} alt={name} className="card-image" />
         <h3 className="card-title">{name}</h3>
         <p className="card-description">{description}</p>
       </div>
-    </>
+    </div>
   );
 };
 
