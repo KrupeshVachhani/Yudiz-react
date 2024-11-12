@@ -9,7 +9,6 @@ const Game = () => {
   const [matchedCards, setMatchedCards] = useState([]);
 
   function handleCardMatch(card) {
-    if (flippedCards.length === 2) return;
 
     setFlippedCards((flippedCards) => [...flippedCards, card]);
     setCount((count) => count + 1);
@@ -17,7 +16,7 @@ const Game = () => {
     if (count === 0) {
       setPreviousCard(card);
     } else {
-      if (previousCard && previousCard.matchingNo === card.matchingNo) {
+      if (previousCard && previousCard.matchingNo === card.matchingNo && previousCard.id !== card.id) {
         setMatchedCards((matchedCards) => [
           ...matchedCards,
           previousCard,
@@ -58,13 +57,12 @@ const Game = () => {
           >
             <img
               className="Card-Game-Img"
-              src={data.img}
+              src={flippedCards.includes(data) || matchedCards.includes(data)
+                ? data.img
+                : "./assets/card.png"}
               alt={data.alt}
               style={{
-                visibility:
-                  flippedCards.includes(data) || matchedCards.includes(data)
-                    ? "visible"
-                    : "hidden",
+               
               }}
             />
           </div>
