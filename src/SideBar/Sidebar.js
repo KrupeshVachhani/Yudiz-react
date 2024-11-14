@@ -20,7 +20,10 @@ const Sidebar = () => {
           <Link to="/time-clock">Time Clock</Link>
         </li>
         <li>
-          <Link to="/game">Game</Link>
+          <Link to="/game">Cards Memory Game</Link>
+        </li>
+        <li>
+          <Link to="/event-handling">Event Handling</Link>
         </li>
       </ul>
     </div>

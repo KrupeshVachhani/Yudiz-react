@@ -98,4 +98,18 @@ export const cards = [
     img: "./assets/crown.png",
     visible: false,
   },
+  {
+    id: 15,
+    alt: "frog-prince",
+    matchingNo: 8,
+    img: "./assets/frog-prince.png",
+    visible: false,
+  },
+  {
+    id: 16,
+    alt: "frog-prince",
+    matchingNo: 8,
+    img: "./assets/frog-prince.png",
+    visible: false,
+  },
 ];

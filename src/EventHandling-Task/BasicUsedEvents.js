@@ -1,22 +1,10 @@
-// import React from "react";
-
-// const Home = () => {
-//   return (
-//     <div style={{width:'100%',height:'100vh',background:'pink',display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
-//       <h1>Welcome To Krupesh's React Training Tasks</h1>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
 import React, { useState } from "react";
 
 const EventsDemo = () => {
   const [keyPressed, setKeyPressed] = useState("");
   const [wheelCount, setWheelCount] = useState(0);
   const [dragStatus, setDragStatus] = useState("Draggable");
-  const [copyText, setCopyText] = useState("");
+  const [copyText, setCopyText] = useState("Copy this text!");
   const [focusStatus, setFocusStatus] = useState("Not Focused");
   const [doubleClickText, setDoubleClickText] = useState("Double Click Me!");
 
@@ -36,8 +24,10 @@ const EventsDemo = () => {
     setDragStatus("Draggable");
   };
 
-  const handleCopy = () => {
-    setCopyText("Text Copied!");
+  const handleCopy = (textToCopy) => {
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      setCopyText("Text Copied!");
+    });
   };
 
   const handleFocus = () => {
@@ -122,7 +112,7 @@ const EventsDemo = () => {
 
       {/* Copy Event */}
       <div
-        onCopy={handleCopy}
+        onClick={() => handleCopy("Hello Krupesh")}
         style={{
           padding: "20px",
           backgroundColor: "#f5f5f5",
@@ -133,7 +123,6 @@ const EventsDemo = () => {
           textAlign: "center",
         }}
       >
-        Copy this text!
         <div style={{ color: "#28a745" }}>{copyText}</div>
       </div>
 

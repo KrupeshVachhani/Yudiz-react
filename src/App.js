@@ -5,6 +5,7 @@ import TimeClock from "./time-changing/TimeClock.js";
 import Game from "./Card-Memory-Game/Game.js";
 import Sidebar from "./SideBar/Sidebar.js";
 import Home from "./Home/Home.js";
+import EventHandling from "./EventHandling-Task/index.js";
 
 export default function App() {
   const cardData = [
@@ -31,7 +32,7 @@ export default function App() {
     <Router>
       <div style={{ display: "flex" }}>
         <Sidebar />
-        <div style={{ marginLeft: "30px", margin: "auto" }}>
+        <div style={{ width: "100%", marginLeft: "30px", margin: "auto",background:'black' }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route
@@ -40,6 +41,7 @@ export default function App() {
             />
             <Route path="/time-clock" element={<TimeClock />} />
             <Route path="/game" element={<Game />} />
+            <Route path="/event-handling" element={<EventHandling />} />
           </Routes>
         </div>
       </div>

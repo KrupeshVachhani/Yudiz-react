@@ -11,7 +11,8 @@ class ClassComponent extends Component {
   };
 
   increment = () => this.setState({ count: this.state.count + 1 });
-  changeColor = () => this.setState({ color: this.state.color === "blue" ? "pink" : "blue" });
+  changeColor = () =>
+    this.setState({ color: this.state.color === "blue" ? "red" : "blue" });
   toggleVisibility = () => this.setState({ isVisible: !this.state.isVisible });
 
   render() {
@@ -46,11 +47,13 @@ export class ClassComponentP extends Component {
     const { name, description, imageUrl, onClickHandler } = this.props;
 
     return (
-      <div className="card" onClick={onClickHandler}>
-        <img src={imageUrl} alt={name} className="card-image" />
-        <h3 className="card-title">{name}</h3>
-        <p className="card-description">{description}</p>
-      </div>
+      <>
+        <div className="card" onClick={onClickHandler}>
+          <img src={imageUrl} alt={name} className="card-image" />
+          <h3 className="card-title">{name}</h3>
+          <p className="card-description">{description}</p>
+        </div>
+      </>
     );
   }
 }

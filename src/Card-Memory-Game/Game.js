@@ -49,7 +49,7 @@ const Game = () => {
   }, [matchedCards]);
 
   return (
-    <>
+    <div className="game">
       <h1># Card Memory Game</h1>
       <div className="Card-Game-Main">
         {cards.map((data) => (
@@ -66,12 +66,11 @@ const Game = () => {
                   : "./assets/card.png"
               }
               alt={data.alt}
-              style={{}}
             />
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

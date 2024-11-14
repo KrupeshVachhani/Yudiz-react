@@ -5,11 +5,11 @@ import "./style.css";
 
 const FunctionalComponent = () => {
   const [count, setCount] = useState(0);
-  const [color, setColor] = useState("pink");
+  const [color, setColor] = useState("red");
   const [isVisible, setIsVisible] = useState(true);
 
   const increment = () => setCount(count + 1);
-  const changeColor = () => setColor(color === "pink" ? "blue" : "pink");
+  const changeColor = () => setColor(color === "red" ? "blue" : "red");
   const toggleVisibility = () => setIsVisible(!isVisible);
 
   return (
