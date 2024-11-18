@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 const Heading = React.createElement("h1", {
     id: "title",
     className: "heading",

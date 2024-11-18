@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // FunctionalComponent.js
 
 import React, { useState } from "react";

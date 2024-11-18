@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 // ClassComponent.js
 
 import React, { Component } from "react";
@@ -54,6 +55,37 @@ export class ClassComponentP extends Component {
           <p className="card-description">{description}</p>
         </div>
       </>
+    );
+  }
+}
+
+//React Lifecycle Method
+export class LifecycleComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { count: 0 };
+  }
+
+  componentDidMount() {
+    console.log("Mounted");
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log("Updated");
+  }
+
+  componentWillUnmount() {
+    console.log("Unmounting");
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Count: {this.state.count}</h1>
+        <button className="increment-button" onClick={() => this.setState({ count: this.state.count + 1 })}>
+          Increment
+        </button>
+      </div>
     );
   }
 }

@@ -1,8 +1,9 @@
 import React from "react";
-import ClassComponent from "./ClassComponent";
+import ClassComponent, { LifecycleComponent } from "./ClassComponent";
 import FunctionalComponent from "./FunctionalComponent";
 import { ClassComponentP } from "./ClassComponent";
 import { FunctionComponentP } from "./FunctionalComponent";
+import PropTypes from "prop-types";
 import "./style.css";
 
 const ClassFnComponent = (props) => {
@@ -30,6 +31,10 @@ const ClassFnComponent = (props) => {
         padding: "20px",
       }}
     >
+      <h1># ReactLifecycle</h1>
+      <div>
+        <LifecycleComponent />
+      </div>
       <h1># ClassComponent And FunctionalComponent</h1>
       <div
         style={{
@@ -86,6 +91,17 @@ const ClassFnComponent = (props) => {
       </div>
     </div>
   );
+};
+
+ClassFnComponent.propTypes = {
+  Data: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      imageUrl: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };
 
 export default ClassFnComponent;

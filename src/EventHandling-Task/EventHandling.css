@@ -1,10 +1,8 @@
 .EventHandling_main {
   overflow-y:hidden ;
-  height: 100vh;
 }
 
 .EventHandling_mini {
-  height: 100vh;
   background: #000;
 }
 
