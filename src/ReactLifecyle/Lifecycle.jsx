@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+
 import React from "react";
 
 class LifecycleDemo extends React.Component {

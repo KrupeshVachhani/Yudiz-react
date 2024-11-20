@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable no-console */
 // ClassComponent.js
 
 import React, { Component } from "react";
