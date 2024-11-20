@@ -18,14 +18,24 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-    
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest",
-      "eslint:recommended",
-      "plugin:react/recommended"
+      "react-app"
+    ],
+    "rules": {
+      "no-console": "warn",
+      "react/prop-types": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "rules": {
+          "@typescript-eslint/no-unused-vars": "warn"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -39,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.15"
   }
 }

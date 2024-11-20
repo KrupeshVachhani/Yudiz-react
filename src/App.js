@@ -6,6 +6,7 @@ import Game from './Card-Memory-Game/Game.js';
 import Sidebar from './SideBar/Sidebar.js';
 import Home from './Home/Home.js';
 import EventHandling from './EventHandling-Task/index.js';
+import Lifecycle from './ReactLifecyle/Lifecycle.jsx'
 
 export default function App() {
   const cardData = [
@@ -43,6 +44,7 @@ export default function App() {
         >
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/react-lifecycle" element={<Lifecycle />} />
             <Route
               path="/class-component"
               element={<ClassFnComponent Data={cardData} />}
@@ -56,3 +58,4 @@ export default function App() {
     </Router>
   );
 }
+
