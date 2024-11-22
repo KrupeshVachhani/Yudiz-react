@@ -7,6 +7,7 @@ import Sidebar from './SideBar/Sidebar.js';
 import Home from './Home/Home.js';
 import EventHandling from './EventHandling-Task/index.js';
 import Lifecycle from './ReactLifecyle/Lifecycle.jsx'
+import UserDashboard from './FetchAPI/FetchAPI.js';
 
 export default function App() {
   const cardData = [
@@ -39,7 +40,7 @@ export default function App() {
             width: '100%',
             marginLeft: '30px',
             margin: 'auto',
-            background: 'black'
+            background: 'inherit'
           }}
         >
           <Routes>
@@ -52,6 +53,7 @@ export default function App() {
             <Route path="/time-clock" element={<TimeClock />} />
             <Route path="/game" element={<Game />} />
             <Route path="/event-handling" element={<EventHandling />} />
+            <Route path="/api-fetch" element={<UserDashboard />} />
           </Routes>
         </div>
       </div>

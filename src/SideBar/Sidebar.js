@@ -24,10 +24,13 @@ const Sidebar = () => {
           <Link to="/time-clock">Time Clock</Link>
         </li>
         <li>
+          <Link to="/event-handling">Event Handling</Link>
+        </li>
+        <li>
           <Link to="/game">Cards Memory Game</Link>
         </li>
         <li>
-          <Link to="/event-handling">Event Handling</Link>
+          <Link to="/api-fetch">API Fetch</Link>
         </li>
       </ul>
     </div>
