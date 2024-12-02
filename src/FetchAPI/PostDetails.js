@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../Axios-Interceptor/AxiosPlaceHolderUser";
-import { useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { RefreshCw } from "lucide-react";
 
 const PostDetail = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPostDetail = async () => {
       try {
         const response = await axiosInstance.get(`/posts/${id}`);
-        setPost(response.data)  ;
+        setPost(response.data);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching post details:", error);
@@ -39,12 +40,22 @@ const PostDetail = () => {
     <div className="p-4">
       <div
         key={post.id}
-        className="bg-slate-500 p-10 m-10 hover:bg-slate-400 text-teal-400 hover:text-teal-700 cursor-pointer border-2 rounded-md"
+        className="flex bg-slate-500 p-10 m-10 text-teal-400 cursor-pointer border-2 rounded-md"
       >
-        <h2 className="text-2xl font-medium">
-          {post.id} {post.title}
-        </h2>
-        <p>{post.body}</p>
+        <div>
+          <h2 className="text-2xl font-medium">
+            {post.id} {post.title}
+          </h2>
+          <p>{post.body}</p>
+        </div>
+        <button
+          className="border-2 px-5 my-4  rounded-md hover:text-black text-emerald-400 hover:border-black"
+          onClick={() => {
+            navigate(`/api-fetch-crud/`);
+          }}
+        >
+          Back
+        </button>
       </div>
     </div>
   );
