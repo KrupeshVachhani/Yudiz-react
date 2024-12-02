@@ -8,6 +8,8 @@ import Home from './Home/Home.js';
 import EventHandling from './EventHandling-Task/index.js';
 import Lifecycle from './ReactLifecyle/Lifecycle.jsx'
 import UserDashboard from './FetchAPI/FetchAPI.js';
+import FetchApiPostCRUD from './FetchAPI/FetchApiPostCRUD.js';
+import PostDetail from './FetchAPI/PostDetails.js';
 
 export default function App() {
   const cardData = [
@@ -30,6 +32,7 @@ export default function App() {
       imageUrl: 'https://via.placeholder.com/150'
     }
   ];
+
 
   return (
     <Router>
@@ -54,6 +57,9 @@ export default function App() {
             <Route path="/game" element={<Game />} />
             <Route path="/event-handling" element={<EventHandling />} />
             <Route path="/api-fetch" element={<UserDashboard />} />
+            <Route path="/api-fetch-crud" element={<FetchApiPostCRUD />} />
+            <Route path="/api-fetch-crud/:id" element={<PostDetail />} />
+
           </Routes>
         </div>
       </div>
