@@ -35,6 +35,9 @@ const Sidebar = () => {
         <li>
           <Link to="/api-fetch-crud">API Fetch Post CRUD</Link>
         </li>
+        <li>
+          <Link to="/props-drilling">Props Drilling</Link>
+        </li>
       </ul>
     </div>
   );
