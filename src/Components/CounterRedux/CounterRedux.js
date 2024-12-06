@@ -16,19 +16,45 @@ const CounterRedux = () => {
   }, [counter, dispatch]);
 
   return (
-    <div>
-      <div>Counter: {counter}</div>
-      {isLogged ? (
-        <h1 style={{ color: "green" }}>Logged in true</h1>
-      ) : (
-        <h1 style={{ color: "red" }}>Logged in false</h1>
-      )}
-      <div>
-        <button onClick={() => dispatch(increment(2))}>Add</button>
-        <br />
-        <button onClick={() => dispatch(decrement(2))}>Decrease</button>
-        <br />
-        <button onClick={() => dispatch(logged())}>Toggle Login</button>
+    <div className="container mx-auto p-6 max-w-md bg-white shadow-lg rounded-xl">
+      <div className="text-center mb-6">
+        <h2 className="text-3xl font-bold text-gray-800">
+          Counter:
+          <span className="text-blue-600 ml-2">{counter}</span>
+        </h2>
+
+        {isLogged ? (
+          <h1 className="text-xl font-semibold text-green-600 mt-4">
+            ✅ Logged In
+          </h1>
+        ) : (
+          <h1 className="text-xl font-semibold text-red-600 mt-4">
+            ❌ Not Logged In
+          </h1>
+        )}
+      </div>
+
+      <div className="flex flex-col space-y-4">
+        <button
+          onClick={() => dispatch(increment(2))}
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          Add (+2)
+        </button>
+
+        <button
+          onClick={() => dispatch(decrement(2))}
+          className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          Decrease (-2)
+        </button>
+
+        <button
+          onClick={() => dispatch(logged())}
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:scale-105"
+        >
+          Toggle Login
+        </button>
       </div>
     </div>
   );
