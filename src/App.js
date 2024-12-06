@@ -1,10 +1,10 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import Sidebar from "./Components/SideBar/Sidebar.js";
+import Home from "./Components/Home/Home.js";
 import ClassFnComponent from "./Components/class-fn-component/index.js";
 import TimeClock from "./Components/time-changing/TimeClock.js";
 import Game from "./Components/Card-Memory-Game/Game.js";
-import Sidebar from "./Components/SideBar/Sidebar.js";
-import Home from "./Components/Home/Home.js";
 import EventHandling from "./Components/EventHandling-Task/index.js";
 import Lifecycle from "./Components/ReactLifecyle/Lifecycle.jsx";
 import UserDashboard from "./Components/FetchAPI/FetchAPI.js";
@@ -34,8 +34,9 @@ export default function App() {
     },
   ];
 
-  return (
-    <Router>
+  // Layout component that includes Sidebar and Outlet
+  const Layout = () => {
+    return (
       <div style={{ display: "flex" }}>
         <Sidebar />
         <div
@@ -46,23 +47,61 @@ export default function App() {
             background: "inherit",
           }}
         >
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/react-lifecycle" element={<Lifecycle />} />
-            <Route
-              path="/class-component"
-              element={<ClassFnComponent Data={cardData} />}
-            />
-            <Route path="/time-clock" element={<TimeClock />} />
-            <Route path="/game" element={<Game />} />
-            <Route path="/event-handling" element={<EventHandling />} />
-            <Route path="/api-fetch" element={<UserDashboard />} />
-            <Route path="/api-fetch-crud" element={<FetchApiPostCRUD />} />
-            <Route path="/api-fetch-crud/:id" element={<PostDetail />} />
-            <Route path="/props-drilling" element={<PropsDrilling />} />
-          </Routes>
+          <Outlet /> 
         </div>
       </div>
-    </Router>
-  );
+    );
+  };
+
+  const appRoutes = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />, 
+      children: [
+        {
+          // index: true,
+          path:'/',
+          element: <Home />,
+        },
+        {
+          path: "react-lifecycle",
+          element: <Lifecycle />,
+        },
+        {
+          path: "class-component",
+          element: <ClassFnComponent Data={cardData} />,
+        },
+        {
+          path: "time-clock",
+          element: <TimeClock />,
+        },
+        {
+          path: "game",
+          element: <Game />,
+        },
+        {
+          path: "event-handling",
+          element: <EventHandling />,
+        },
+        {
+          path: "api-fetch",
+          element: <UserDashboard />,
+        },
+        {
+          path: "api-fetch-crud",
+          element: <FetchApiPostCRUD />,
+        },
+        {
+          path: "api-fetch-crud/:id",
+          element: <PostDetail />,
+        },
+        {
+          path: "props-drilling",
+          element: <PropsDrilling />,
+        },
+      ],
+    },
+  ]);
+
+  return <RouterProvider router={appRoutes} />;
 }
