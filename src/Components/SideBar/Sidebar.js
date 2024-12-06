@@ -38,6 +38,9 @@ const Sidebar = () => {
         <li>
           <Link to="/props-drilling">Props Drilling</Link>
         </li>
+        <li>
+          <Link to="/redux">Redux </Link>
+        </li>
       </ul>
     </div>
   );

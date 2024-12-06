@@ -11,6 +11,7 @@ import UserDashboard from "./Components/FetchAPI/FetchAPI.js";
 import FetchApiPostCRUD from "./Components/FetchAPI/FetchApiPostCRUD.js";
 import PostDetail from "./Components/FetchAPI/PostDetails.js";
 import PropsDrilling from "./Components/PropsDrilling/PropsDrilling.js";
+import CounterRedux from "./Components/CounterRedux/CounterRedux.js";
 
 export default function App() {
   const cardData = [
@@ -99,6 +100,10 @@ export default function App() {
           path: "props-drilling",
           element: <PropsDrilling />,
         },
+        {
+          path: "redux",
+          element: <CounterRedux />,
+        }
       ],
     },
   ]);
