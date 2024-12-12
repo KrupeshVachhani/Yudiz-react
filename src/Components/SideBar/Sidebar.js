@@ -41,6 +41,9 @@ const Sidebar = () => {
         <li>
           <Link to="/redux">Redux </Link>
         </li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
       </ul>
     </div>
   );

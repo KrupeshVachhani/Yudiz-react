@@ -1,5 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { Login } from "./Components/login-redirect";
+import { ProtectedRoute } from "./protectedRoute/ProtectedRoute.js";
 import Sidebar from "./Components/SideBar/Sidebar.js";
 import Home from "./Components/Home/Home.js";
 import ClassFnComponent from "./Components/class-fn-component/index.js";
@@ -12,28 +14,9 @@ import FetchApiPostCRUD from "./Components/FetchAPI/FetchApiPostCRUD.js";
 import PostDetail from "./Components/FetchAPI/PostDetails.js";
 import PropsDrilling from "./Components/PropsDrilling/PropsDrilling.js";
 import CounterRedux from "./Components/CounterRedux/CounterRedux.js";
+import { cardData } from "./constants.js";
 
 export default function App() {
-  const cardData = [
-    {
-      id: 1,
-      name: "Card 1",
-      description: "This is the first card.",
-      imageUrl: "https://via.placeholder.com/150",
-    },
-    {
-      id: 2,
-      name: "Card 2",
-      description: "This is the second card.",
-      imageUrl: "https://via.placeholder.com/150",
-    },
-    {
-      id: 3,
-      name: "Card 3",
-      description: "This is the third card.",
-      imageUrl: "https://via.placeholder.com/150",
-    },
-  ];
 
   // Layout component that includes Sidebar and Outlet
   const Layout = () => {
@@ -48,7 +31,7 @@ export default function App() {
             background: "inherit",
           }}
         >
-          <Outlet /> 
+          <Outlet />
         </div>
       </div>
     );
@@ -57,53 +40,97 @@ export default function App() {
   const appRoutes = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />, 
+      element: <Layout />,
       children: [
         {
-          // index: true,
-          path:'/',
-          element: <Home />,
+          path: "/",
+          element: (
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          ),
         },
+        { path: "login", element: <Login /> },
         {
           path: "react-lifecycle",
-          element: <Lifecycle />,
+          element: (
+            <ProtectedRoute>
+              <Lifecycle />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "class-component",
-          element: <ClassFnComponent Data={cardData} />,
+          element: (
+            <ProtectedRoute>
+              <ClassFnComponent Data={cardData} />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "time-clock",
-          element: <TimeClock />,
+          element: (
+            <ProtectedRoute>
+              <TimeClock />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "game",
-          element: <Game />,
+          element: (
+            <ProtectedRoute>
+              <Game />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "event-handling",
-          element: <EventHandling />,
+          element: (
+            <ProtectedRoute>
+              <EventHandling />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "api-fetch",
-          element: <UserDashboard />,
+          element: (
+            <ProtectedRoute>
+              <UserDashboard />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "api-fetch-crud",
-          element: <FetchApiPostCRUD />,
+          element: (
+            <ProtectedRoute>
+              <FetchApiPostCRUD />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "api-fetch-crud/:id",
-          element: <PostDetail />,
+          element: (
+            <ProtectedRoute>
+              <PostDetail />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "props-drilling",
-          element: <PropsDrilling />,
+          element: (
+            <ProtectedRoute>
+              <PropsDrilling />
+            </ProtectedRoute>
+          ),
         },
         {
           path: "redux",
-          element: <CounterRedux />,
-        }
+          element: (
+            <ProtectedRoute>
+              <CounterRedux />
+            </ProtectedRoute>
+          ),
+        },
       ],
     },
   ]);
