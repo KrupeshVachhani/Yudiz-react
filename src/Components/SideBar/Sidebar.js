@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { logout } from "../../actions/auth"; // Import the logout action
+import { logout } from "../../redux/actions/auth"; // Import the logout action
 import "./style.css";
 
 const Sidebar = () => {

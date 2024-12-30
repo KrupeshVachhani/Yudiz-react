@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { login } from "../../actions/auth";
+import { login } from "../../redux/actions/auth";
 import { USERS } from "../../constants";
 import { FiCopy } from "react-icons/fi";
 

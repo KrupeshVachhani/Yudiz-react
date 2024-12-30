@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment } from "../../actions/counter";
-import { logged } from "../../actions/loggedIn";
+import { decrement, increment } from "../../redux/actions/counter";
+import { logged } from "../../redux/actions/loggedIn";
 
 const CounterRedux = () => {
   const [count, setCount] = useState(0);
