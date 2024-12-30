@@ -18,6 +18,11 @@ const authReducer = (state = initialState, action) => {
         role: role,
       };
 
+    case "LOGOUT":
+      return {
+        ...initialState, // Reset state to initial values
+      };
+
     default:
       return state;
   }

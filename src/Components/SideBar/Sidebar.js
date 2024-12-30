@@ -1,10 +1,22 @@
-
-// Sidebar.js
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logout } from "../../actions/auth"; // Import the logout action
 import "./style.css";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  function handleLogout() {
+    // Clear Redux state and local storage
+    dispatch(logout()); // Dispatch the logout action to clear auth state
+    localStorage.clear();
+
+    // Redirect to login page
+    navigate("/login", { replace: true });
+  }
+
   return (
     <div className="sidebar">
       <Link to="/">
@@ -43,6 +55,9 @@ const Sidebar = () => {
         </li>
         <li>
           <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <button onClick={handleLogout}>Logout</button>
         </li>
       </ul>
     </div>
