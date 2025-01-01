@@ -87,7 +87,7 @@ class LifecycleDemo extends React.Component {
     console.log("3 & 7. render() - Rendering UI.");
     if (this.state.error) {
       return (
-        <div className="flex items-center justify-center h-screen bg-red-100">
+        <div className="flex items-center justify-center h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400">
           <h1 className="text-3xl font-bold text-red-600">
             Error: {this.state.error}
           </h1>
@@ -96,7 +96,7 @@ class LifecycleDemo extends React.Component {
     }
 
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <div className="flex flex-col items-center justify-center h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400">
         <h1 className="text-4xl font-semibold text-gray-800 mb-4">
           Counter: {this.state.count}
         </h1>

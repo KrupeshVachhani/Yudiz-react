@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 
 const EventsDemo = () => {
@@ -28,6 +27,7 @@ const EventsDemo = () => {
   const handleCopy = (textToCopy) => {
     navigator.clipboard.writeText(textToCopy).then(() => {
       setCopyText("Text Copied!");
+      setTimeout(() => setCopyText("Copy this text!"), 2000);
     });
   };
 
@@ -45,116 +45,71 @@ const EventsDemo = () => {
   };
 
   return (
-    <div
-      style={{
-        maxWidth: "100%",
-        margin: "20px auto",
-        padding: "20px",
-        fontFamily: "Arial, sans-serif",
-        background: "white",
-      }}
-    >
-      <h1
-        style={{
-          textAlign: "center",
-          color: "#333",
-          marginBottom: "20px",
-        }}
-      >
-        React Events Demo
-      </h1>
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 p-6">
+      <div className="max-w-3xl mx-auto space-y-6">
+        <h1 className="text-3xl font-bold text-gray-800 text-center mb-8">
+          React Events Demo
+        </h1>
 
-      {/* Keyboard Event */}
-      <input
-        type="text"
-        onKeyDown={handleKeyDown}
-        style={{
-          width: "100%",
-          padding: "10px",
-          marginBottom: "10px",
-          borderRadius: "4px",
-          border: "1px solid #ddd",
-        }}
-        placeholder="Type something..."
-      />
-      <div style={{ height: "20px", color: "#007bff" }}>{keyPressed}</div>
+        {/* Keyboard Event */}
+        <div className="space-y-2">
+          <input
+            type="text"
+            onKeyDown={handleKeyDown}
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+            placeholder="Type something..."
+          />
+          <div className="text-blue-600 h-6">{keyPressed}</div>
+        </div>
 
-      {/* Wheel Event */}
-      <div
-        onWheel={handleWheel}
-        style={{
-          padding: "20px",
-          backgroundColor: "#e9ecef",
-          borderRadius: "8px",
-          marginBottom: "10px",
-          textAlign: "center",
-        }}
-      >
-        Wheel Count: {wheelCount}
-      </div>
+        {/* Wheel Event */}
+        <div
+          onWheel={handleWheel}
+          className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow duration-200"
+        >
+          <span className="text-lg font-semibold text-gray-700">
+            Wheel Count: {wheelCount}
+          </span>
+        </div>
 
-      {/* Drag Event */}
-      <div
-        draggable
-        onDragStart={handleDragStart}
-        onDragEnd={handleDragEnd}
-        style={{
-          padding: "20px",
-          backgroundColor: "#f8f9fa",
-          border: "2px dashed #dee2e6",
-          borderRadius: "8px",
-          marginBottom: "10px",
-          cursor: "move",
-          textAlign: "center",
-        }}
-      >
-        {dragStatus}
-      </div>
+        {/* Drag Event */}
+        <div
+          draggable
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}
+          className="bg-white rounded-lg border-2 border-dashed border-gray-300 p-6 text-center cursor-move hover:border-blue-400 transition-colors duration-200"
+        >
+          <span className="text-lg text-gray-700">{dragStatus}</span>
+        </div>
 
-      {/* Copy Event */}
-      <div
-        onClick={() => handleCopy("Hello Krupesh")}
-        style={{
-          padding: "20px",
-          backgroundColor: "#f5f5f5",
-          borderRadius: "8px",
-          marginBottom: "10px",
-          cursor: "pointer",
-          userSelect: "all",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ color: "#28a745" }}>{copyText}</div>
-      </div>
+        {/* Copy Event */}
+        <div
+          onClick={() => handleCopy("Hello Krupesh")}
+          className="bg-white rounded-lg shadow-md p-6 text-center cursor-pointer hover:bg-gray-50 transition-colors duration-200"
+        >
+          <span className="text-lg text-green-600">{copyText}</span>
+        </div>
 
-      {/* Focus Events */}
-      <input
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        style={{
-          width: "100%",
-          padding: "10px",
-          marginBottom: "10px",
-          borderRadius: "4px",
-          border: "1px solid #ddd",
-        }}
-        placeholder="Click here to focus"
-      />
-      <div style={{ textAlign: "center", color: "#dc3545" }}>{focusStatus}</div>
+        {/* Focus Events */}
+        <div className="space-y-2">
+          <input
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-200"
+            placeholder="Click here to focus"
+          />
+          <div className="text-center text-red-600">{focusStatus}</div>
+        </div>
 
-      {/* Double Click Event */}
-      <div
-        onDoubleClick={handleDoubleClick}
-        style={{
-          padding: "20px",
-          backgroundColor: "#ffd700",
-          borderRadius: "8px",
-          marginBottom: "10px",
-          cursor: "pointer",
-          textAlign: "center",
-        }}
-      >
-        {doubleClickText}
+        {/* Double Click Event */}
+        <div
+          onDoubleClick={handleDoubleClick}
+          className="bg-yellow-300 rounded-lg shadow-md p-6 text-center cursor-pointer hover:bg-yellow-400 transition-colors duration-200"
+        >
+          <span className="text-lg font-semibold text-gray-800">
+            {doubleClickText}
+          </span>
+        </div>
       </div>
     </div>
   );

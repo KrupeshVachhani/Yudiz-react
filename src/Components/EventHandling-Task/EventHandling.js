@@ -1,7 +1,4 @@
-/* eslint-disable no-console */
-
-import React, { useState } from "react";
-import "./EventHandling.css";
+import React, { useState, useEffect, useCallback } from "react";
 
 const EventHandling = () => {
   const images = [
@@ -17,9 +14,49 @@ const EventHandling = () => {
   const [cursorVisibility, setCursorVisibility] = useState(false);
   const [Cimg, setImg] = useState("./assets/penguin.png");
 
-  const handleCursorMove = (e) => {
-    setCursorPosition({ x: e.clientX, y: e.clientY });
-  };
+  // Smooth cursor movement using RAF
+  const smoothCursorUpdate = useCallback((targetX, targetY) => {
+    setCursorPosition((prev) => {
+      const dx = (targetX - prev.x) * 0.3; // Adjust speed factor (0.3 for smooth follow)
+      const dy = (targetY - prev.y) * 0.3;
+
+      return {
+        x: prev.x + dx,
+        y: prev.y + dy,
+      };
+    });
+  }, []);
+
+  useEffect(() => {
+    let animationFrameId;
+    let targetX = cursorPosition.x;
+    let targetY = cursorPosition.y;
+
+    const animate = () => {
+      smoothCursorUpdate(targetX, targetY);
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    const handleMouseMove = (e) => {
+      targetX = e.clientX;
+      targetY = e.clientY;
+    };
+
+    if (cursorVisibility) {
+      window.addEventListener("mousemove", handleMouseMove);
+      animationFrameId = requestAnimationFrame(animate);
+    }
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [
+    cursorVisibility,
+    smoothCursorUpdate,
+    cursorPosition.x,
+    cursorPosition.y,
+  ]);
 
   const handleCursorVisibility = (img, visible) => {
     setCursorVisibility(visible);
@@ -31,69 +68,40 @@ const EventHandling = () => {
   const handleScroll = (e) => {
     console.log("Scroll event detected:", e);
   };
-  
+
   return (
     <div
-      className="EventHandling_main"
+      className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 p-6"
       onScroll={handleScroll}
-      style={{
-        height: "",
-        overflowY: "auto", 
-        border: "1px solid black",
-      }}
     >
+      {/* Custom Cursor */}
       {cursorVisibility && (
         <img
           src={Cimg}
           alt="Cursor"
+          className="fixed pointer-events-none z-50 w-[50px] h-[50px] transform -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{
-            width: "50px",
-            height: "50px",
-            position: "fixed",
-            top: cursorPosition.y + "px",
-            left: cursorPosition.x + "px",
-            pointerEvents: "none",
-            transform: "translate(-50%, -50%)",
+            top: `${cursorPosition.y}px`,
+            left: `${cursorPosition.x}px`,
             scale: cursorVisibility ? "100%" : "0%",
-            transition: "top 0.1s, left 0.1s, scale 0.2s",
-            zIndex: 1000,
+            transition: "scale 0.2s ease-out",
           }}
         />
       )}
 
-      <div
-        className="EventHandling_mini"
-        style={{
-          background: "pink",
-          margin: "10px",
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(400px, 1fr))",
-          position: "relative",
-          minHeight: "100vh",
-        }}
-      >
+      {/* Image Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-screen">
         {images.map((e) => (
           <div
-            onMouseMove={handleCursorMove}
+            key={e.id}
             onMouseEnter={() => handleCursorVisibility(e.img, true)}
             onMouseLeave={() => handleCursorVisibility(e.img, false)}
-            key={e.id}
-            style={{
-              border: "1px solid black",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "20px",
-            }}
+            className="bg-white rounded-xl shadow-lg p-8 flex justify-center items-center transform hover:scale-105 transition-transform duration-300"
           >
             <img
               src={e.img}
               alt={`Item ${e.id}`}
-              style={{
-                width: "200px",
-                height: "200px",
-                pointerEvents: "none",
-              }}
+              className="w-48 h-48 object-contain pointer-events-none"
             />
           </div>
         ))}

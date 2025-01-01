@@ -13,10 +13,11 @@ const Component1 = () => {
   console.log("Rendering Component1");
 
   return (
-    <div className="w-full flex justify-center flex-col">
-      <h1 className="text-center">Component 1</h1>
+    <div className="flex flex-col items-center justify-center h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400">
+      <div className="text-2xl font-bold text-gray-800 mb-4">#Props Drilling</div>
+      <h1 className="text-4xl font-semibold text-gray-800 mb-4">Component 1</h1>
       <button
-        className="bg-slate-300 p-3 m-3"
+        className="px-6 py-3 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600 transition duration-300"
         onClick={() => {
           setCount(count + 1);
         }}
@@ -37,8 +38,8 @@ const Component2 = ({ data }) => {
   console.log("Rendering Component2");
 
   return (
-    <div>
-      <h2 className="text-center">Component 2</h2>
+    <div className="mt-6">
+      <h2 className="text-3xl font-semibold text-gray-800 mb-4">Component 2</h2>
       <Component3 data={data} />
     </div>
   );
@@ -53,8 +54,8 @@ const Component3 = ({ data }) => {
   console.log("Rendering Component3");
 
   return (
-    <div>
-      <h3 className="text-center">Component 3</h3>
+    <div className="mt-6">
+      <h3 className="text-2xl font-semibold text-gray-800 mb-4">Component 3</h3>
       <Component4 data={data} />
     </div>
   );
@@ -69,8 +70,8 @@ const Component4 = ({ data }) => {
   console.log("Rendering Component4");
 
   return (
-    <div>
-      <h4 className="text-center">Component 4</h4>
+    <div className="mt-6">
+      <h4 className="text-xl font-semibold text-gray-800 mb-4">Component 4</h4>
       <Component5 data={data} />
     </div>
   );
@@ -85,9 +86,9 @@ const Component5 = ({ data }) => {
   console.log("Rendering Component5");
 
   return (
-    <div>
-      <h5 className="text-center">Component 5 (Last Child)</h5>
-      <p className="text-center">Data received: {data}</p>
+    <div className="mt-6">
+      <h5 className="text-lg font-semibold text-gray-800 mb-4">Component 5 (Last Child)</h5>
+      <p className="text-center text-gray-800">Data received: {data}</p>
       <Component6 />
     </div>
   );
@@ -96,4 +97,5 @@ const Component5 = ({ data }) => {
 const Component6 = () => {
   return <ParentCounter />;
 };
+
 export default Component1;

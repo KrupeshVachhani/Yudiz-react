@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { axiosInstance } from "../Axios-Interceptor/AxiosPlaceHolderUser";
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { RefreshCw } from "lucide-react";
 
 const PostDetail = () => {
@@ -33,29 +33,28 @@ const PostDetail = () => {
   }
 
   if (!post) {
-    return <div>Post not found</div>;
+    return (
+      <div className="text-center text-lg text-gray-500">Post not found</div>
+    );
   }
 
   return (
-    <div className="p-4">
-      <div
-        key={post.id}
-        className="flex bg-slate-500 p-10 m-10 text-teal-400 cursor-pointer border-2 rounded-md"
-      >
-        <div>
-          <h2 className="text-2xl font-medium">
-            {post.id} {post.title}
-          </h2>
-          <p>{post.body}</p>
+    <div className="min-h-screen p-6 bg-gray-50">
+      <div className="max-w-3xl mx-auto space-y-6 bg-white p-6 rounded-lg shadow-lg">
+        <h2 className="text-3xl font-semibold text-gray-800 mb-4">
+          {post.title}
+        </h2>
+        <p className="text-gray-600 text-lg">{post.body}</p>
+        <div className="mt-6 flex justify-center">
+          <button
+            className="px-6 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-600 transition-colors"
+            onClick={() => {
+              navigate(`/api-fetch-crud/`);
+            }}
+          >
+            Back
+          </button>
         </div>
-        <button
-          className="border-2 px-5 my-4  rounded-md hover:text-black text-emerald-400 hover:border-black"
-          onClick={() => {
-            navigate(`/api-fetch-crud/`);
-          }}
-        >
-          Back
-        </button>
       </div>
     </div>
   );

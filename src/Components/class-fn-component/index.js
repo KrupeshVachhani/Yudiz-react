@@ -1,94 +1,66 @@
 import React from "react";
-import ClassComponent, { LifecycleComponent } from "./ClassComponent";
+import ClassComponent from "./ClassComponent";
 import FunctionalComponent from "./FunctionalComponent";
 import { ClassComponentP } from "./ClassComponent";
 import { FunctionComponentP } from "./FunctionalComponent";
 import PropTypes from "prop-types";
-import "./style.css";
 
 const ClassFnComponent = (props) => {
-  let componentStyle = { border: "1px solid black", padding: "10px" };
-  let cards = {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    padding: "30px",
-    gap: "10px",
-    border: "1px solid black",
-  };
-
-  let cardData = props.Data;
+  const cardData = props.Data;
 
   return (
-    <div
-      style={{
-        background: "pink",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "20px",
-        padding: "20px",
-      }}
-    >
-      <h1># ReactLifecycle</h1>
-      <div>
-        <LifecycleComponent />
-      </div>
-      <h1># ClassComponent And FunctionalComponent</h1>
-      <div
-        style={{
-          display: "flex",
-          gap: "10px",
-          padding: "10px",
-          marginTop: "20px",
-        }}
-      >
-        <div style={componentStyle}>
-          <h1>Class Component Example:</h1>
-          <ClassComponent />
-        </div>
-        <div style={componentStyle}>
-          <h1>Functional Component Example:</h1>
-          <FunctionalComponent />
-        </div>
-      </div>
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 flex flex-col items-center gap-8 py-8 px-4">
 
-      <h1># Card List</h1>
-      <div
-        className="App"
-        style={{ display: "flex", justifyContent: "space-around", gap: "20px" }}
-      >
-        <div className="card-container" style={cards}>
-          <h1>Class Component Props</h1>
-
-          <div style={{ display: "flex", gap: "10px" }}>
-            {cardData.map((card) => (
-              <ClassComponentP
-                key={card.id}
-                name={card.name}
-                description={card.description}
-                imageUrl={card.imageUrl}
-              />
-            ))}
+      {/* Components Comparison Section */}
+      <section className="w-full max-w-6xl">
+        <h1 className="text-3xl font-bold text-gray-800 text-center mb-6"># ClassComponent And FunctionalComponent</h1>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Class Component Example:</h2>
+            <ClassComponent />
+          </div>
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-4">Functional Component Example:</h2>
+            <FunctionalComponent />
           </div>
         </div>
+      </section>
 
-        <div className="card-container" style={cards}>
-          <h1>Functional Component Props</h1>
+      {/* Card List Section */}
+      <section className="w-full max-w-6xl">
+        <h1 className="text-3xl font-bold text-gray-800 text-center mb-6"># Card List</h1>
+        <div className="grid md:grid-cols-2 gap-8">
+          {/* Class Component Cards */}
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Class Component Props</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {cardData.map((card) => (
+                <ClassComponentP
+                  key={card.id}
+                  name={card.name}
+                  description={card.description}
+                  imageUrl={card.imageUrl}
+                />
+              ))}
+            </div>
+          </div>
 
-          <div style={{ display: "flex", gap: "10px" }}>
-            {cardData.map((card) => (
-              <FunctionComponentP
-                key={card.id}
-                name={card.name}
-                description={card.description}
-                imageUrl={card.imageUrl}
-              />
-            ))}
+          {/* Functional Component Cards */}
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-2xl font-semibold text-gray-800 mb-6 text-center">Functional Component Props</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {cardData.map((card) => (
+                <FunctionComponentP
+                  key={card.id}
+                  name={card.name}
+                  description={card.description}
+                  imageUrl={card.imageUrl}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

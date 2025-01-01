@@ -1,12 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-:root{
-  background: #fff;
+
+:root {
+  /* Set color to black */
   color: black;
+
+  /* Add the gradient as a custom property */
+  --background-gradient: radial-gradient(
+    ellipse at top right,
+    #ec4899,
+    #9333ea,
+    #6366f1
+  );
+}
+
+/* Apply the custom gradient to the body or other elements */
+body {
+  background: var(--background-gradient);
 }

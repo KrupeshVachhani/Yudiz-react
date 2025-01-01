@@ -16,10 +16,10 @@ const FetchApiPostCRUD = () => {
     const ApiFetch = async () => {
       const posts = await axiosInstance.get("/posts");
       setPost(posts.data);
+      setLoading(false);
     };
 
     ApiFetch();
-    setLoading(false);
   }, []);
 
   const handleSearch = (e) => {
@@ -55,6 +55,8 @@ const FetchApiPostCRUD = () => {
         setLoading(false);
       } catch (error) {
         console.error("Error creating post:", error);
+        setLoading(false);
+        setShowAddPost(false);
       }
     } else {
       alert("Please fill in both title and body.");
@@ -71,10 +73,7 @@ const FetchApiPostCRUD = () => {
     a.stopPropagation();
     try {
       await axiosInstance.delete(`/posts/${id}`);
-
       setPost(post.filter((p) => p.id !== id));
-
-      console.log("Deleted post with ID:", id);
     } catch (error) {
       console.error("Error deleting post:", error);
       alert("Failed to delete the post");
@@ -83,9 +82,8 @@ const FetchApiPostCRUD = () => {
 
   const handleLocalUpdate = async (a, id) => {
     a.stopPropagation();
-
     await axiosInstance.put(`posts/${id}`);
-    alert("updated", id);
+    alert("Updated", id);
   };
 
   if (loading) {
@@ -97,11 +95,12 @@ const FetchApiPostCRUD = () => {
   }
 
   return (
-    <div className="flex">
-      <div className="flex-1 p-4">
-        <div className="flex fixed top-0 left-64 right-0 bg-white p-4">
-          {/* Search Input */}
+    <div className="min-h-screen p-6 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400">
+      <div className="max-w-7xl mx-auto space-y-6">
+        {/* Search Input & Add Post Button */}
+        <div className="flex items-center justify-between mb-6">
           <div className="relative flex-grow">
+            <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
             <input
               type="text"
               placeholder="Search posts..."
@@ -109,62 +108,56 @@ const FetchApiPostCRUD = () => {
               onChange={handleSearch}
               className="w-full p-2 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-            <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
           </div>
-
-          {/* Add Post Button */}
           <button
-            className="ml-4 bg-teal-500 text-white px-4 py-2 rounded-md"
             onClick={handleAddPost}
+            className="ml-4 bg-teal-500 text-white px-4 py-2 rounded-md hover:bg-teal-600 transition"
           >
             Add Post
           </button>
         </div>
 
-        <div className="mt-16">
-          {/* Show message when no posts match the search */}
-          {filteredPost.length === 0 ? (
-            <div className="text-center text-lg text-gray-500">
-              No posts found.
-            </div>
-          ) : (
-            filteredPost.map((e) => (
-              <div
-                onClick={() => handlePost(e.id)}
-                key={e.id}
-                className="flex justify-between bg-slate-500 p-10 m-10 hover:bg-slate-400 text-teal-400 hover:text-teal-700 cursor-pointer border-2 rounded-md"
-              >
-                <div className="m-5">
-                  <h2 className="text-2xl font-medium">
-                    {e.id} {e.title}
-                  </h2>
-                  <p>{e.body}</p>
+        {/* Post Listings */}
+        {filteredPost.length === 0 ? (
+          <div className="text-center text-lg text-gray-500">
+            No posts found.
+          </div>
+        ) : (
+          filteredPost.map((e) => (
+            <div
+              key={e.id}
+              onClick={() => handlePost(e.id)}
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl cursor-pointer transition"
+            >
+              <div className="flex justify-between">
+                <div className="flex flex-col">
+                  <h2 className="text-2xl font-semibold text-gray-900">{e.title}</h2>
+                  <p className="text-gray-600">{e.body}</p>
                 </div>
-                <div className="flex flex-col justify-evenly gap-5">
-                  {/* Delete Icon */}
+                <div className="flex flex-col justify-between gap-3">
                   <Trash2
-                    className="w-8 h-8 hover:text-teal-300"
+                    className="w-6 h-6 text-red-600 hover:text-red-700"
                     onClick={(a) => handleLocalDelete(a, e.id)}
                   />
-                  {/* Edit Icon */}
                   <NotebookPen
-                    className="w-8 h-8 hover:text-teal-300"
+                    className="w-6 h-6 text-blue-600 hover:text-blue-700"
                     onClick={(a) => handleLocalUpdate(a, e.id)}
                   />
                 </div>
               </div>
-            ))
-          )}
-        </div>
+            </div>
+          ))
+        )}
       </div>
 
+      {/* Add Post Modal */}
       {showAddPost && (
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
           <div className="bg-indigo-300 rounded-lg w-full max-w-md p-6">
             <h2 className="text-xl font-bold mb-4">Add New Post</h2>
             <div className="space-y-3">
               <div className="flex">
-                <label className="w-10 py-2 mx-2">Title</label>
+                <label className="w-20 py-2 mx-2">Title</label>
                 <input
                   className="w-full p-1 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={title}
@@ -172,7 +165,7 @@ const FetchApiPostCRUD = () => {
                 />
               </div>
               <div className="flex">
-                <label className="w-10 py-2 mx-2">Body</label>
+                <label className="w-20 py-2 mx-2">Body</label>
                 <input
                   className="w-full p-1 pl-10 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                   value={body}
@@ -182,13 +175,13 @@ const FetchApiPostCRUD = () => {
             </div>
             <button
               onClick={handleAddPostApi}
-              className="mt-4 w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition-colors"
+              className="mt-4 w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 transition"
             >
               Add Post
             </button>
             <button
               onClick={() => setShowAddPost(false)}
-              className="mt-4 w-full bg-gray-500 text-white p-2 rounded-lg hover:bg-gray-600 transition-colors"
+              className="mt-4 w-full bg-gray-500 text-white p-2 rounded-lg hover:bg-gray-600 transition"
             >
               Close
             </button>

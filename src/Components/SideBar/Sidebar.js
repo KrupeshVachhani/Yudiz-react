@@ -1,8 +1,7 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { logout } from "../../redux/actions/auth"; // Import the logout action
-import "./style.css";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -18,46 +17,172 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="sidebar">
-      <Link to="/">
-        <h3 className="Home">Navigation</h3>
-      </Link>
-      <ul>
+    <div className="w-64 bg-gray-100 min-h-screen p-4 border-r">
+      <NavLink to="/" className="block mb-6 text-xl font-bold text-gray-800">
+        Navigation
+      </NavLink>
+      <ul className="space-y-3">
         <li>
-          <Link to="/">Home</Link>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            Home
+          </NavLink>
         </li>
         <li>
-          <Link to="/react-lifecycle">React lifecycle</Link>
+          <NavLink
+            to="/react-lifecycle"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            React lifecycle
+          </NavLink>
         </li>
         <li>
-          <Link to="/class-component">Class Component</Link>
+          <NavLink
+            to="/class-component"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            Class Component
+          </NavLink>
         </li>
         <li>
-          <Link to="/time-clock">Time Clock</Link>
+          <NavLink
+            to="/time-clock"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            Time Clock
+          </NavLink>
         </li>
         <li>
-          <Link to="/event-handling">Event Handling</Link>
+          <NavLink
+            to="/event-handling"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            Event Handling
+          </NavLink>
         </li>
         <li>
-          <Link to="/game">Cards Memory Game</Link>
+          <NavLink
+            to="/game"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            Cards Memory Game
+          </NavLink>
         </li>
         <li>
-          <Link to="/api-fetch">API Fetch</Link>
+          <NavLink
+            to="/api-fetch"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            API Fetch
+          </NavLink>
         </li>
         <li>
-          <Link to="/api-fetch-crud">API Fetch Post CRUD</Link>
+          <NavLink
+            to="/api-fetch-crud"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            API Fetch Post CRUD
+          </NavLink>
         </li>
         <li>
-          <Link to="/props-drilling">Props Drilling</Link>
+          <NavLink
+            to="/props-drilling"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            Props Drilling
+          </NavLink>
         </li>
         <li>
-          <Link to="/redux">Redux </Link>
+          <NavLink
+            to="/redux"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            Redux
+          </NavLink>
         </li>
         <li>
-          <Link to="/login">Login</Link>
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              `block px-4 py-2 rounded-md transition duration-300 text-center ${
+                isActive
+                  ? "bg-blue-500 text-white font-semibold"
+                  : "text-gray-700 hover:bg-gray-200"
+              }`
+            }
+          >
+            Login
+          </NavLink>
         </li>
         <li>
-          <button onClick={handleLogout}>Logout</button>
+          <button
+            onClick={handleLogout}
+            className="block w-full px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600 transition duration-300"
+          >
+            Logout
+          </button>
         </li>
       </ul>
     </div>

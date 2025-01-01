@@ -95,32 +95,54 @@ const Game = () => {
   }, [matchedCards]);
 
   return (
-    <div className="game bg-pink-100 min-h-screen flex flex-col justify-center items-center p-4">
-      <h1 className="text-3xl font-bold text-center mb-8 text-gray-800">
+    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 flex flex-col justify-center items-center p-4">
+      <h1 className="text-4xl font-bold text-center mb-8 text-white drop-shadow-lg">
         Card Memory Game
       </h1>
 
       {/* Game Statistics Display */}
-      <div className="mb-4 text-center">
-        <h1 className="text-2xl font-semibold">useRef used For Stats</h1>
-        {console.log(gameStats)}
-        <p className="font-semibold">Total Cards: {gameStats.totalCards}</p>
-        <p className="font-semibold">Matched Cards: {gameStats.matchedCount}</p>
-        <p className="font-semibold">Remaining Cards: {gameStats.remainingCards}</p>
-        <p className="font-semibold">Completion: {gameStats.completionPercentage}%</p>
-        <p className="font-semibold">Attempts: {gameStats.attempts}</p>
+      <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20 mb-8 w-full max-w-md">
+        <h2 className="text-2xl font-bold text-white mb-4 text-center drop-shadow-sm">useRef used For Stats</h2>
+        <div className="space-y-3">
+          <p className="text-white/90 font-semibold flex justify-between">
+            <span>Total Cards:</span> 
+            <span className="text-white">{gameStats.totalCards}</span>
+          </p>
+          <p className="text-white/90 font-semibold flex justify-between">
+            <span>Matched Cards:</span> 
+            <span className="text-white">{gameStats.matchedCount}</span>
+          </p>
+          <p className="text-white/90 font-semibold flex justify-between">
+            <span>Remaining Cards:</span> 
+            <span className="text-white">{gameStats.remainingCards}</span>
+          </p>
+          <p className="text-white/90 font-semibold flex justify-between">
+            <span>Completion:</span> 
+            <span className="text-white">{gameStats.completionPercentage}%</span>
+          </p>
+          <p className="text-white/90 font-semibold flex justify-between">
+            <span>Attempts:</span> 
+            <span className="text-white">{gameStats.attempts}</span>
+          </p>
+          <div className="w-full h-2 bg-white/10 rounded-full mt-4">
+            <div
+              className="h-full bg-gradient-to-r from-pink-500 to-violet-500 rounded-full transition-all duration-300"
+              style={{ width: `${gameStats.completionPercentage}%` }}
+            />
+          </div>
+        </div>
       </div>
 
-      <div className="card-game-main max-w-[600px] border-2 border-black rounded-lg mt-8 overflow-hidden">
+      <div className="card-game-main max-w-[600px] bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl overflow-hidden shadow-xl">
         <div className="grid grid-cols-4 gap-4 p-4">
           {cards.map((data) => (
             <div
               key={data.id}
-              className="card-game-holder relative group w-full h-[100px] flex justify-center items-center cursor-pointer"
+              className="card-game-holder relative group h-[100px] flex justify-center items-center cursor-pointer transform transition-all duration-300 hover:scale-105"
               onClick={() => handleCardMatch(data)}
             >
               <img
-                className="card-game-img w-full h-full object-cover pointer-events-none"
+                className="card-game-img w-full h-full object-cover pointer-events-none rounded-xl shadow-lg transition-transform duration-300"
                 src={
                   flippedCards.includes(data) || matchedCards.includes(data)
                     ? data.img
