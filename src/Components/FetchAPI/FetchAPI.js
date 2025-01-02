@@ -1,5 +1,14 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
-import { Search, RefreshCw, Mail, Phone, Globe, Building2, MapPin, X } from "lucide-react";
+import {
+  Search,
+  RefreshCw,
+  Mail,
+  Phone,
+  Globe,
+  Building2,
+  MapPin,
+  X,
+} from "lucide-react";
 
 const UserDashboard = () => {
   const [users, setUsers] = useState([]);
@@ -12,7 +21,9 @@ const UserDashboard = () => {
     const fetchUsers = async () => {
       try {
         setLoading(true);
-        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/users"
+        );
         const data = await response.json();
         setUsers(data);
       } catch (err) {
@@ -52,7 +63,10 @@ const UserDashboard = () => {
         <div className="w-96 p-6 text-center bg-white rounded-lg shadow-lg">
           <X className="w-12 h-12 mx-auto text-red-500" />
           <p className="font-semibold text-red-500">{error}</p>
-          <button onClick={() => window.location.reload()} className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600"
+          >
             Try Again
           </button>
         </div>
@@ -61,7 +75,7 @@ const UserDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 p-6">
+    <div className="min-h-screen md:pl-80 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 p-6">
       <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
@@ -75,7 +89,7 @@ const UserDashboard = () => {
               placeholder="Search by name or email..."
               value={searchTerm}
               onChange={handleSearch}
-              className="w-full pl-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 truncate py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
         </div>
@@ -91,19 +105,21 @@ const UserDashboard = () => {
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg">
                   {user.name.charAt(0)}
                 </div>
-                <div>
-                  <h3 className="font-semibold text-gray-900">{user.name}</h3>
-                  <p className="text-sm text-gray-500 flex items-center gap-1">
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-gray-900 truncate">
+                    {user.name}
+                  </h3>
+                  <p className="text-sm text-gray-500 flex items-center gap-1 truncate">
                     <Mail className="w-3 h-3" /> {user.email}
                   </p>
                 </div>
               </div>
               <div className="space-y-2">
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-600 truncate">
                   <Building2 className="inline w-3 h-3 mr-1" />
                   {user.company.name}
                 </div>
-                <div className="text-sm text-gray-600">
+                <div className="text-sm text-gray-600 truncate">
                   <Phone className="inline w-3 h-3 mr-1" />
                   {user.phone}
                 </div>
@@ -126,26 +142,28 @@ const UserDashboard = () => {
               <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-2xl">
                 {selectedUser.name.charAt(0)}
               </div>
-              <div>
-                <h2 className="text-xl font-semibold">{selectedUser.name}</h2>
-                <p className="text-gray-500">{selectedUser.email}</p>
+              <div className="flex-1 min-w-0">
+                <h2 className="text-xl font-semibold truncate">
+                  {selectedUser.name}
+                </h2>
+                <p className="text-gray-500 truncate">{selectedUser.email}</p>
               </div>
             </div>
 
             <div className="space-y-3">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 truncate">
                 <Phone className="w-4 h-4 text-gray-500" />
                 <span>{selectedUser.phone}</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 truncate">
                 <Globe className="w-4 h-4 text-gray-500" />
                 <span>{selectedUser.website}</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 truncate">
                 <Building2 className="w-4 h-4 text-gray-500" />
                 <span>{selectedUser.company.name}</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 truncate">
                 <MapPin className="w-4 h-4 text-gray-500" />
                 <span>{`${selectedUser.address.street}, ${selectedUser.address.city}`}</span>
               </div>

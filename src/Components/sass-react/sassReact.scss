@@ -1,0 +1,42 @@
+.App {
+  height: 100vh;
+  overflow: hidden;
+  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  h1 {
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+  }
+
+  table {
+    width: 80%;
+    height: 60%;
+    margin: 20px 0;
+    background-color: aqua;
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    td:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding-left: 30%;
+  }
+  @media (width > 831px) {
+    padding-right: 30%;
+  }
+}

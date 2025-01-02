@@ -15,9 +15,9 @@ import PostDetail from "./Components/FetchAPI/PostDetails.js";
 import PropsDrilling from "./Components/PropsDrilling/PropsDrilling.js";
 import CounterRedux from "./Components/CounterRedux/CounterRedux.js";
 import { cardData } from "./constants.js";
+import SassReact from "./Components/sass-react/SassReact.js";
 
 export default function App() {
-
   // Layout component that includes Sidebar and Outlet
   const Layout = () => {
     return (
@@ -128,6 +128,14 @@ export default function App() {
           element: (
             <ProtectedRoute>
               <CounterRedux />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "sass",
+          element: (
+            <ProtectedRoute>
+              <SassReact />
             </ProtectedRoute>
           ),
         },

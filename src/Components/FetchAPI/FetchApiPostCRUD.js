@@ -95,7 +95,7 @@ const FetchApiPostCRUD = () => {
   }
 
   return (
-    <div className="min-h-screen p-6 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400">
+    <div className="min-h-screen md:pl-80  p-6 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400">
       <div className="max-w-7xl mx-auto space-y-6">
         {/* Search Input & Add Post Button */}
         <div className="flex items-center justify-between mb-6">
