@@ -54,7 +54,7 @@ export const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 relative">
+    <div className="min-h-screen flex items-center justify-center  relative">
       {/* User List in Top Right Corner */}
       <div className="absolute top-4 right-4 bg-white shadow-md rounded-lg p-4 w-64">
         <h3 className="text-xl font-bold mb-3 text-center">Users</h3>
