@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { Login } from "./Components/login-redirect";
 import { ProtectedRoute } from "./protectedRoute/ProtectedRoute.js";
@@ -18,17 +18,42 @@ import { cardData } from "./constants.js";
 import SassReact from "./Components/sass-react/SassReact.js";
 
 export default function App() {
+  const [marginLeft, setMarginLeft] = useState("0px");
+
+  // Function to update marginLeft based on screen width
+  const updateMarginLeft = () => {
+    if (window.innerWidth > 768) {
+      setMarginLeft("250px"); // Add margin for desktop
+    } else {
+      setMarginLeft("0px"); // No margin for mobile
+    }
+  };
+
+  // Add event listener for window resize
+  useEffect(() => {
+    updateMarginLeft(); // Set initial margin
+    window.addEventListener("resize", updateMarginLeft); // Update on resize
+
+    // Cleanup event listener on unmount
+    return () => {
+      window.removeEventListener("resize", updateMarginLeft);
+    };
+  }, []);
+
   // Layout component that includes Sidebar and Outlet
   const Layout = () => {
     return (
       <div style={{ display: "flex" }}>
+        {/* Sidebar */}
         <Sidebar />
+
+        {/* Main Content */}
         <div
           style={{
-            width: "100%",
-            marginLeft: "30px",
-            margin: "auto",
-            background: "inherit",
+            flex: 1, // Take up remaining space
+            marginLeft: marginLeft, // Dynamic margin based on screen width
+            padding: "20px", // Add padding for better spacing
+            transition: "margin-left 0.3s ease", // Smooth transition for mobile
           }}
         >
           <Outlet />

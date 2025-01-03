@@ -95,7 +95,7 @@ const Game = () => {
   }, [matchedCards]);
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 flex flex-col justify-center items-center p-4">
+    <div className="min-h-screen  from-pink-300 via-purple-300 to-indigo-400 flex flex-col justify-center items-center p-4">
       <h1 className="text-4xl font-bold text-center mb-8 text-white drop-shadow-lg">
         Card Memory Game
       </h1>

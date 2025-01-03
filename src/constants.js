@@ -1,5 +1,4 @@
 export const USERS = {
-  "kuldip sir": "admin",
   "krupesh vachhani": "admin",
   "munna thakur": "user",
   "shivani patel": "user",

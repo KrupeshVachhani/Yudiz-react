@@ -9,7 +9,7 @@ const ClassFnComponent = (props) => {
   const cardData = props.Data;
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 flex flex-col items-center gap-8 py-8 px-4">
+    <div className="min-h-screen   from-pink-300 via-purple-300 to-indigo-400 flex flex-col items-center gap-8 py-8 px-4">
 
       {/* Components Comparison Section */}
       <section className="w-full max-w-6xl">

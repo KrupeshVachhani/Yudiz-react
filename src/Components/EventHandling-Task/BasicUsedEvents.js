@@ -45,7 +45,7 @@ const EventsDemo = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 p-6">
+    <div className="min-h-screen   from-pink-300 via-purple-300 to-indigo-400 p-6">
       <div className="max-w-3xl mx-auto space-y-6">
         <h1 className="text-3xl font-bold text-gray-800 text-center mb-8">
           React Events Demo

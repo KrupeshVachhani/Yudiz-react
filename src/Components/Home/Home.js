@@ -6,7 +6,7 @@ const Home = () => {
 
   const Navigate = useNavigate()
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400">
+    <div className="flex flex-col items-center justify-center min-h-screen   from-pink-300 via-purple-300 to-indigo-400">
       <h1 className="text-4xl font-bold text-gray-800 text-center mb-4">
         Welcome To Krupesh's React Training Tasks
       </h1>

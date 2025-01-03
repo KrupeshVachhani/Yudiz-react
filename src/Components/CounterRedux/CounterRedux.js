@@ -18,7 +18,7 @@ const CounterRedux = () => {
   }, [counter, dispatch]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400">
+    <div className="flex flex-col items-center justify-center h-screen   from-pink-300 via-purple-300 to-indigo-400">
       <div className="container mx-auto p-8 max-w-md bg-white shadow-2xl rounded-xl">
         <div className="text-center mb-6">
           <div className="text-2xl font-bold text-gray-800 mb-4">

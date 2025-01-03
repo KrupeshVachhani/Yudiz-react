@@ -13,7 +13,7 @@ const Component1 = () => {
   console.log("Rendering Component1");
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400">
+    <div className="flex flex-col items-center justify-center h-screen   from-pink-300 via-purple-300 to-indigo-400">
       <div className="text-2xl font-bold text-gray-800 mb-4">#Props Drilling</div>
       <h1 className="text-4xl font-semibold text-gray-800 mb-4">Component 1</h1>
       <button

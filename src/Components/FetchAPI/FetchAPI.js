@@ -75,14 +75,16 @@ const UserDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen md:pl-80 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 p-6">
-      <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-6">
-        <div className="flex items-center justify-between mb-6">
+    <div className="min-h-screen md:pl-42   from-pink-300 via-purple-300 to-indigo-400 p-4 sm:p-6">
+      <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-4 sm:p-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between mb-6 gap-4">
           <div className="flex items-center gap-2">
             <Building2 className="w-6 h-6" />
-            <h1 className="text-2xl font-bold">User Management Dashboard</h1>
+            <h1 className="text-xl sm:text-2xl font-bold">
+              User Management Dashboard
+            </h1>
           </div>
-          <div className="relative w-1/3">
+          <div className="relative w-full sm:w-1/3">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
             <input
               type="text"
@@ -94,7 +96,7 @@ const UserDashboard = () => {
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {filteredUsers.map((user) => (
             <div
               key={user.id}
@@ -131,11 +133,11 @@ const UserDashboard = () => {
 
       {selectedUser && (
         <div
-          className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center"
+          className="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center p-4"
           onClick={() => setSelectedUser(null)}
         >
           <div
-            className="bg-white p-6 rounded-lg shadow-lg w-full sm:w-96"
+            className="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center gap-4 mb-4">

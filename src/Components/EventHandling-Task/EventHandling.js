@@ -71,7 +71,7 @@ const EventHandling = () => {
 
   return (
     <div
-      className="min-h-screen md:pl-80 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-300 via-purple-300 to-indigo-400 p-6"
+      className="min-h-screen md:pl-42   from-pink-300 via-purple-300 to-indigo-400 p-6"
       onScroll={handleScroll}
     >
       {/* Custom Cursor */}
