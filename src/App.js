@@ -16,6 +16,7 @@ import PropsDrilling from "./Components/PropsDrilling/PropsDrilling.js";
 import CounterRedux from "./Components/CounterRedux/CounterRedux.js";
 import { cardData } from "./constants.js";
 import SassReact from "./Components/sass-react/SassReact.js";
+import Internalization from "./Components/Internilaztion/index.js";
 
 export default function App() {
   const [marginLeft, setMarginLeft] = useState("0px");
@@ -161,6 +162,14 @@ export default function App() {
           element: (
             <ProtectedRoute>
               <SassReact />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "internalization",
+          element: (
+            <ProtectedRoute>
+              <Internalization />
             </ProtectedRoute>
           ),
         },

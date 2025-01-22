@@ -159,6 +159,16 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink
+                to="/internalization"
+                className={({ isActive }) =>
+                  `sidebar-link ${isActive ? "active" : ""}`
+                }
+              >
+                Internalization
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/login"
                 className={({ isActive }) =>
                   `sidebar-link ${isActive ? "active" : ""}`
