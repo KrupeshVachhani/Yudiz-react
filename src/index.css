@@ -19,6 +19,7 @@
     #9333ea,
     #6366f1
   );
+  overflow: hidden;
 }
 
 /* Apply the custom gradient to the body or other elements */

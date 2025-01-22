@@ -32,7 +32,7 @@ const Sidebar = () => {
       </div>
 
       {/* Sidebar */}
-      <div className={`sidebar ${isMobileMenuOpen ? "open" : ""}`}>
+      <div className={`sidebar ${isMobileMenuOpen ? "open" : ""} min-h-screen overflow-y-hidden`}>
         {/* Close menu icon for mobile */}
         {isMobileMenuOpen && (
           <div className="close-menu-icon" onClick={toggleMobileMenu}>
