@@ -17,6 +17,7 @@ import CounterRedux from "./Components/CounterRedux/CounterRedux.js";
 import { cardData } from "./constants.js";
 import SassReact from "./Components/sass-react/SassReact.js";
 import Internalization from "./Components/Internilaztion/index.js";
+import ReactQuery from "./Components/ReactQuery/index.js";
 
 export default function App() {
   const [marginLeft, setMarginLeft] = useState("0px");
@@ -51,10 +52,10 @@ export default function App() {
         {/* Main Content */}
         <div
           style={{
-            flex: 1, // Take up remaining space
-            marginLeft: marginLeft, // Dynamic margin based on screen width
-            padding: "20px", // Add padding for better spacing
-            transition: "margin-left 0.3s ease", // Smooth transition for mobile
+            flex: 1, 
+            marginLeft: marginLeft, 
+            padding: "20px", 
+            transition: "margin-left 0.3s ease", 
           }}
         >
           <Outlet />
@@ -170,6 +171,14 @@ export default function App() {
           element: (
             <ProtectedRoute>
               <Internalization />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "reactquery",
+          element: (
+            <ProtectedRoute>
+              <ReactQuery />
             </ProtectedRoute>
           ),
         },

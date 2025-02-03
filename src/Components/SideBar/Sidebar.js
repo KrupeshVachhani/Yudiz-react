@@ -32,7 +32,11 @@ const Sidebar = () => {
       </div>
 
       {/* Sidebar */}
-      <div className={`sidebar ${isMobileMenuOpen ? "open" : ""} min-h-screen overflow-y-hidden`}>
+      <div
+        className={`sidebar ${
+          isMobileMenuOpen ? "open" : ""
+        } min-h-screen overflow-y-hidden`}
+      >
         {/* Close menu icon for mobile */}
         {isMobileMenuOpen && (
           <div className="close-menu-icon" onClick={toggleMobileMenu}>
@@ -165,6 +169,16 @@ const Sidebar = () => {
                 }
               >
                 Internalization
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/ReactQuery"
+                className={({ isActive }) =>
+                  `sidebar-link ${isActive ? "active" : ""}`
+                }
+              >
+                React Query
               </NavLink>
             </li>
             <li>

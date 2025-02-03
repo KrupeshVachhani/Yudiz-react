@@ -12,14 +12,11 @@
   /* Set color to black */
   color: black;
 
+  background-color: blueviolet;
+
   /* Add the gradient as a custom property */
-  --background-gradient: radial-gradient(
-    ellipse at top right,
-    #ec4899,
-    #9333ea,
-    #6366f1
-  );
-  overflow: hidden;
+
+  /* overflow: hidden; */
 }
 
 /* Apply the custom gradient to the body or other elements */
