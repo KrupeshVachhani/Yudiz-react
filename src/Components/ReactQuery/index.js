@@ -48,20 +48,23 @@ const ReactQuery = () => {
     queryFn: () => fetchUser(userId),
     placeholderData: { name: "Loading...", email: "Loading..." },
     staleTime: 3000,
+    refetchOnWindowFocus:true
   });
-
+  
   const { data: posts, isLoading: postsLoading } = useQuery({
     queryKey: ["posts", userId],
     queryFn: () => fetchPostsByUser(userId),
     enabled: !!userId,
     initialData: [],
+    refetchOnWindowFocus:true
   });
-
+  
   const { data: comments, isLoading: commentsLoading } = useQuery({
     queryKey: ["comments", selectedPostId],
     queryFn: () => fetchCommentsByPost(selectedPostId),
     enabled: !!selectedPostId,
     initialData: [],
+    refetchOnWindowFocus:true
   });
 
   const mutation = useMutation({

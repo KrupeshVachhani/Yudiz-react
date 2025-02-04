@@ -183,6 +183,16 @@ const Sidebar = () => {
             </li>
             <li>
               <NavLink
+                to="/infinitescroll"
+                className={({ isActive }) =>
+                  `sidebar-link ${isActive ? "active" : ""}`
+                }
+              >
+                Infinite Scroll
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/login"
                 className={({ isActive }) =>
                   `sidebar-link ${isActive ? "active" : ""}`

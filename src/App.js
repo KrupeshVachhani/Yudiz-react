@@ -18,6 +18,7 @@ import { cardData } from "./constants.js";
 import SassReact from "./Components/sass-react/SassReact.js";
 import Internalization from "./Components/Internilaztion/index.js";
 import ReactQuery from "./Components/ReactQuery/index.js";
+import ScollingPage from "./Components/InfiniteScoll/index.jsx";
 
 export default function App() {
   const [marginLeft, setMarginLeft] = useState("0px");
@@ -179,6 +180,14 @@ export default function App() {
           element: (
             <ProtectedRoute>
               <ReactQuery />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "infinitescroll",
+          element: (
+            <ProtectedRoute>
+              <ScollingPage />
             </ProtectedRoute>
           ),
         },
